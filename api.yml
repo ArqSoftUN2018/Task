@@ -1,0 +1,204 @@
+#Test with: http://editor.swagger.io/
+
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Microservice for Tasks
+  description: Java + MySQL
+  license:
+    name: Software Architecture 2018-II
+host: 192.168.99.101:3000
+basePath: /tasks-ms/resources
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /tasks:
+    post:
+      summary: Creates a new task
+      operationId: createTask
+      parameters:
+        - name: task
+          in: body
+          required: true
+          description: Task Object
+          schema:
+            $ref: '#/definitions/TaskInput'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/Task'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all tasks
+      operationId: getAllTasks
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/TasksList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /tasks/{code}:
+    get:
+      summary: Returns a task with the given code
+      operationId: getTaskByCode
+      parameters:
+        - name: code
+          in: path
+          description: The code of the task to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Task'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+    put:
+      summary: Updates a task with the given code
+      operationId: updateTask
+      parameters:
+        - name: code
+          in: path
+          description: The code of the task to be updated
+          required: true
+          type: integer
+        - name: task
+          in: body
+          required: true
+          description: Task Object
+          schema:
+            $ref: '#/definitions/TaskInput'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Task'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+    delete:
+      summary: Deletes a task with the given code
+      operationId: deleteTask
+      parameters:
+        - name: code
+          in: path
+          description: The code of the task to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/TaskCode'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+definitions:
+
+  # Tasks
+  Task:
+    type: object
+    properties:
+      code:
+        type: integer
+      name:
+        type: string
+      credits:
+        type: integer
+      professor:
+        type: string
+
+  TaskInput:
+    type: object
+    properties:
+      name:
+        type: string
+      credits:
+        type: integer
+      professor:
+        type: string
+
+  TasksList:
+    type: object
+    required:
+      - total
+      - list
+    properties:
+      total:
+        type: number
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/Task'
+
+  TaskCode:
+    type: object
+    properties:
+      code:
+        type: integer
+
+# Errors
+  ErrorModel:
+    type: object
+    required:
+      - message
+      - code
+    properties:
+      message:
+        type: string
+      code:
+        type: number
+      description:
+        type: object

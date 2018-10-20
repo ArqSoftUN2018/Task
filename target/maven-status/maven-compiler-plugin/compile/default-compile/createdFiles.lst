@@ -1,0 +1,4 @@
+sa/task/service/TaskService.class
+sa/task/JAXRSConfiguration.class
+sa/task/model/Task.class
+sa/task/resource/TaskResource.class
