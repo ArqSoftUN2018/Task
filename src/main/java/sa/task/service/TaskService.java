@@ -31,6 +31,7 @@ public class TaskService {
         Task taskToUpdate = entityManager.find(Task.class, code);
         taskToUpdate.setName(task.getName());
         taskToUpdate.setArchivado(task.getArchivado());
+        taskToUpdate.setGrupo(task.getGrupo());
         taskToUpdate.setDescription(task.getDescription());
         //taskToUpdate.setPrueba(task.getPrueba());
         //taskToUpdate.setLista(task.getLista());

@@ -1,0 +1,17 @@
+version: '2'
+services:
+  tasks-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: tasks-db
+      MYSQL_PASSWORD: '123'
+      MYSQL_ROOT_PASSWORD: '123'
+      MYSQL_USER: sa
+    ports:
+      - 3306:3306
+  tasks-ms:
+    image: dieosiris23/task_ms
+    ports:
+      - 3003:3003
+    depends_on:
+      - tasks-db

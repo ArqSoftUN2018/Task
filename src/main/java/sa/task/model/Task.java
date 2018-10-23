@@ -15,6 +15,8 @@ public class Task {
 
     private String name;
     private int archivado;
+    private int grupo;
+    private int tablero;
     private String description;
 
     // private int lista
@@ -39,7 +41,18 @@ public class Task {
     public void setArchivado(int archivado) {
         this.archivado = archivado;
     }
-
+    public int getGrupo() {
+        return grupo;
+    }
+    public void setGrupo(int archivado) {
+        this.grupo = grupo;
+    }
+    public int getTablero() {
+        return grupo;
+    }
+    public void setTablero(int tablero) {
+        this.tablero = tablero;
+    }
     public String getDescription() {
         return description;
     }
