@@ -155,9 +155,9 @@ definitions:
         type: integer
       name:
         type: string
-      credits:
+      archivado:
         type: integer
-      professor:
+      description:
         type: string
 
   TaskInput:
@@ -165,9 +165,9 @@ definitions:
     properties:
       name:
         type: string
-      credits:
+      archivado:
         type: integer
-      professor:
+      description:
         type: string
 
   TasksList:
