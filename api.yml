@@ -6,7 +6,7 @@ info:
   title: Microservice for Tasks
   description: Java + MySQL
   license:
-    name: Software Architecture 2018-II
+    name: Software Architecture 2018-III
 host: 192.168.99.101:3003
 basePath: /tasks-ms/resources
 schemes:
