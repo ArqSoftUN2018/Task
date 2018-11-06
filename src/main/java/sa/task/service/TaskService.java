@@ -5,6 +5,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Date;
+import java.util.*;
 
 @Stateless
 public class TaskService {
@@ -17,6 +19,16 @@ public class TaskService {
                 .setFirstResult(first).setMaxResults(maxResult).getResultList();
     }
 
+    public List<Task> getAllTaskslist(int group1){
+        return entityManager.createNamedQuery("TaskfindBygroup1").setParameter("group1", group1).getResultList();
+
+    }
+
+    public List<Task> getAllTasksuserid(int userid){
+        return entityManager.createNamedQuery("TaskfindByuserid").setParameter("userid", userid).getResultList();
+
+    }
+
     public Task getTaskByCode(long code){
         return entityManager.find(Task.class, code);
     }
@@ -27,16 +39,50 @@ public class TaskService {
         return task;
     }
 
-    public Task updateTask(long code, Task task) {
+
+    public Task updateArchived (long code, Task task) {
+        Task taskToUpdate = entityManager.find(Task.class, code);
+        taskToUpdate.setArchived(task.getArchived());
+        entityManager.merge(taskToUpdate);
+        return entityManager.find(Task.class, code);
+    }
+    public Task updateBoard (long code, Task task) {
+        Task taskToUpdate = entityManager.find(Task.class, code);
+        taskToUpdate.setBoard(task.getBoard());
+        entityManager.merge(taskToUpdate);
+        return entityManager.find(Task.class, code);
+    }
+    public Task updateTaskgroup(long code, Task task) {
+      Task taskToUpdate = entityManager.find(Task.class, code);
+
+      ArrayList<Integer> auxi= task.getGroup2();
+      auxi.add(666);
+      taskToUpdate.setGroup2(auxi);
+      entityManager.merge(taskToUpdate);
+      return entityManager.find(Task.class, code);
+    }
+    public Task updateTashttps://www.rottentomatoes.com/m/teen_titans_go_to_the_movies/k(long code, Task task) {
         Task taskToUpdate = entityManager.find(Task.class, code);
         taskToUpdate.setName(task.getName());
-        taskToUpdate.setArchivado(task.getArchivado());
-        taskToUpdate.setGrupo(task.getGrupo());
+        taskToUpdate.setArchived(task.getArchived());
+        taskToUpdate.setComplete(task.getComplete());
+        taskToUpdate.setGroup1(task.getGroup1());
+        taskToUpdate.setUserid(task.getUserid());
         taskToUpdate.setDescription(task.getDescription());
+        taskToUpdate.setCreated(task.getCreated());
+        taskToUpdate.setUpdated(task.getUpdated());
+        taskToUpdate.setGroup2(task.getGroup2());
+
+        try{
+        taskToUpdate.setDead(task.getDead());
+        } catch(Exception e){
+          return null;
+      }
         //taskToUpdate.setPrueba(task.getPrueba());
         //taskToUpdate.setLista(task.getLista());
         entityManager.merge(taskToUpdate);
         return entityManager.find(Task.class, code);
+
     }
 
     public long deleteTask(long code) {

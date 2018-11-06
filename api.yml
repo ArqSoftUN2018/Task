@@ -155,7 +155,7 @@ definitions:
         type: integer
       name:
         type: string
-      archivado:
+      archived:
         type: integer
       description:
         type: string
@@ -165,7 +165,7 @@ definitions:
     properties:
       name:
         type: string
-      archivado:
+      archived:
         type: integer
       description:
         type: string

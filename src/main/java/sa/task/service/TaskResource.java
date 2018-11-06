@@ -30,6 +30,19 @@ public class TaskResource {
     }
 
     @GET
+    @Path("/group1/{group1}")
+    public List<Task> getAllTaskslist(@PathParam("group1") int group1 ){
+        return taskService.getAllTaskslist(group1);
+    }
+
+
+    @GET
+    @Path("/userid/{userid}")
+    public List<Task> getAllTasksuserid(@PathParam("userid") int userid){
+        return taskService.getAllTasksuserid(userid);
+    }
+
+    @GET
     @Path("{code}")
     public Response getTaskByCode(@PathParam("code") long code) {
         Task task = taskService.getTaskByCode(code);
@@ -50,6 +63,32 @@ public class TaskResource {
     @Path("{code}")
     public Response updateTask(@PathParam("code") long code, Task task) {
         Task updatedTask = taskService.updateTask(code, task);
+        response = Response.status(Response.Status.OK);
+        response.entity(updatedTask);
+        return response.build();
+    }
+    @PUT
+    @Path("/archived/{code}")
+    public Response updateArchived(@PathParam("code") long code, Task task) {
+        Task updatedTask = taskService.updateArchived(code, task);
+        response = Response.status(Response.Status.OK);
+        response.entity(updatedTask);
+        return response.build();
+    }
+
+    @PUT
+    @Path("/board/{code}")
+    public Response updateBoard(@PathParam("code") long code, Task task) {
+        Task updatedTask = taskService.updateBoard(code, task);
+        response = Response.status(Response.Status.OK);
+        response.entity(updatedTask);
+        return response.build();
+    }
+
+    @PUT
+    @Path("/group2/{code}")
+    public Response updateTaskgroup(@PathParam("code") long code, Task task) {
+        Task updatedTask = taskService.updateTaskgroup(code, task);
         response = Response.status(Response.Status.OK);
         response.entity(updatedTask);
         return response.build();
