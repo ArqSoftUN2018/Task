@@ -52,6 +52,7 @@ public class TaskService {
         entityManager.merge(taskToUpdate);
         return entityManager.find(Task.class, code);
     }
+    /*
     public Task updateTaskgroup(long code, Task task) {
       Task taskToUpdate = entityManager.find(Task.class, code);
 
@@ -61,7 +62,8 @@ public class TaskService {
       entityManager.merge(taskToUpdate);
       return entityManager.find(Task.class, code);
     }
-    public Task updateTashttps://www.rottentomatoes.com/m/teen_titans_go_to_the_movies/k(long code, Task task) {
+    */
+    public Task updateTask(long code, Task task) {
         Task taskToUpdate = entityManager.find(Task.class, code);
         taskToUpdate.setName(task.getName());
         taskToUpdate.setArchived(task.getArchived());
@@ -71,13 +73,9 @@ public class TaskService {
         taskToUpdate.setDescription(task.getDescription());
         taskToUpdate.setCreated(task.getCreated());
         taskToUpdate.setUpdated(task.getUpdated());
-        taskToUpdate.setGroup2(task.getGroup2());
-
-        try{
+        //taskToUpdate.setGroup2(task.getGroup2());
         taskToUpdate.setDead(task.getDead());
-        } catch(Exception e){
-          return null;
-      }
+
         //taskToUpdate.setPrueba(task.getPrueba());
         //taskToUpdate.setLista(task.getLista());
         entityManager.merge(taskToUpdate);

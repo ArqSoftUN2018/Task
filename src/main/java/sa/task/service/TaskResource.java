@@ -30,14 +30,14 @@ public class TaskResource {
     }
 
     @GET
-    @Path("/group1/{group1}")
+    @Path("/group1/{group1}") //funcional
     public List<Task> getAllTaskslist(@PathParam("group1") int group1 ){
         return taskService.getAllTaskslist(group1);
     }
 
 
     @GET
-    @Path("/userid/{userid}")
+    @Path("/userid/{userid}")//funcional
     public List<Task> getAllTasksuserid(@PathParam("userid") int userid){
         return taskService.getAllTasksuserid(userid);
     }
@@ -68,7 +68,7 @@ public class TaskResource {
         return response.build();
     }
     @PUT
-    @Path("/archived/{code}")
+    @Path("/archived/{code}")// funcional
     public Response updateArchived(@PathParam("code") long code, Task task) {
         Task updatedTask = taskService.updateArchived(code, task);
         response = Response.status(Response.Status.OK);
@@ -77,14 +77,14 @@ public class TaskResource {
     }
 
     @PUT
-    @Path("/board/{code}")
+    @Path("/board/{code}")// funcional
     public Response updateBoard(@PathParam("code") long code, Task task) {
         Task updatedTask = taskService.updateBoard(code, task);
         response = Response.status(Response.Status.OK);
         response.entity(updatedTask);
         return response.build();
     }
-
+/*
     @PUT
     @Path("/group2/{code}")
     public Response updateTaskgroup(@PathParam("code") long code, Task task) {
@@ -93,6 +93,7 @@ public class TaskResource {
         response.entity(updatedTask);
         return response.build();
     }
+*/
 
     @DELETE
     @Path("{code}")

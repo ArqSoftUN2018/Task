@@ -31,11 +31,11 @@ public class Task {
     private Date created; // fecha de cracion
     private Date updated; // fecha de modificacion
     private Date dead; // fecha de terminacion
-
+/*
     @ElementCollection
     private ArrayList<Integer> group2 = new ArrayList<Integer>();
     // private int lista
-
+*/
     public Long getCode() {
         return code;
     }
@@ -108,30 +108,22 @@ public class Task {
     public Date getDead() {
         return dead;
     }
-    public void setDead(Date dead) throws Exception   {
+      public void setDead(Date dead)   {
+          this.dead = dead;
 
 
-        try{
-          this.dead=dead;
-        } catch(Exception e){
-          String sDate1="31/12/1998";
-          Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
-
-          //String date = simpleDateFormat.format(new Date());
-
-          //Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
-          this.dead = date1;
-        }
 
     }
-
+/*
         public ArrayList<Integer> getGroup2() {
             return group2;
         }
-
+*/
+/*
         public void setGroup2(ArrayList<Integer> group2) {
             this.group2 = group2;
         }
+/*
 
 /*
     public String getPrueba() {
