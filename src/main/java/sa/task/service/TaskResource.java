@@ -84,7 +84,7 @@ public class TaskResource {
         response.entity(updatedTask);
         return response.build();
     }
-/*
+
     @PUT
     @Path("/group2/{code}")
     public Response updateTaskgroup(@PathParam("code") long code, Task task) {
@@ -93,7 +93,7 @@ public class TaskResource {
         response.entity(updatedTask);
         return response.build();
     }
-*/
+
 
     @DELETE
     @Path("{code}")

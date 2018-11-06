@@ -52,7 +52,7 @@ public class TaskService {
         entityManager.merge(taskToUpdate);
         return entityManager.find(Task.class, code);
     }
-    /*
+
     public Task updateTaskgroup(long code, Task task) {
       Task taskToUpdate = entityManager.find(Task.class, code);
 
@@ -62,7 +62,7 @@ public class TaskService {
       entityManager.merge(taskToUpdate);
       return entityManager.find(Task.class, code);
     }
-    */
+    
     public Task updateTask(long code, Task task) {
         Task taskToUpdate = entityManager.find(Task.class, code);
         taskToUpdate.setName(task.getName());

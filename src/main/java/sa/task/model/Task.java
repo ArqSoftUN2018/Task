@@ -31,11 +31,11 @@ public class Task {
     private Date created; // fecha de cracion
     private Date updated; // fecha de modificacion
     private Date dead; // fecha de terminacion
-/*
-    @ElementCollection
+
+    //@ElementCollection
     private ArrayList<Integer> group2 = new ArrayList<Integer>();
     // private int lista
-*/
+
     public Long getCode() {
         return code;
     }
@@ -114,16 +114,16 @@ public class Task {
 
 
     }
-/*
+
         public ArrayList<Integer> getGroup2() {
             return group2;
         }
-*/
-/*
+
+
         public void setGroup2(ArrayList<Integer> group2) {
             this.group2 = group2;
         }
-/*
+
 
 /*
     public String getPrueba() {
